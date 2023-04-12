@@ -141,7 +141,8 @@ Because of the way this is implemented, it is impossible to `return` anything in
                 for (let player in leaderboard) {
                     lua("add_leaderboard_player", player.name, player.score);
                 }
-                // You can also convert the array to JSON then convert it back to a list in lua using another library like rxi/json.lua.
+                // You can also convert the array to JSON then convert it back to a list in lua using 
+                // another library like rxi/json.lua.
                 
                 break
 
@@ -161,7 +162,7 @@ Because of the way this is implemented, it is impossible to `return` anything in
     })
 ```
 
-Note that there will be a frame delay if you are only calling `js.update()` in `love.update`. If that is a problem for you, you can also manually call `js.update()` after requesting some value.
+Note that there will be a frame delay when recieving data from JavaScript if you are only calling `js.update()` in `love.update`. If that is a problem for you, you can also manually call `js.update()` after requesting the data.
 
 ### Passing arguments
 
