@@ -1,6 +1,6 @@
 # love-with-js
 
-A quick and easy way to connect Lua to Javascript in [LÖVE](https://love2d.org/) games that uses love.js.
+A quick and easy way to connect Lua to JavaScript in [LÖVE](https://love2d.org/) games that uses love.js.
 
 This comes in handy in case you are trying to implement an SDK like [CrazyGames'](https://www.crazygames.com) or you want to connect the game to the webpage so it behaves a certain way when a button (outside the game) is pressed for example.
 
@@ -130,7 +130,7 @@ If `js.update()` causes any performance problem (which should not and did not ha
 
 Because of the way this is implemented, it is impossible to `return` anything in the same line. However, you can instead call a function with the desired return value you need as a response.
 
-```javacript
+```javascript
     // JavaScript
     function runCommand(cmd, args) {
         switch (cmd) {
