@@ -43,7 +43,7 @@ Please note that this method relies on JavaScript's `eval()` function which may 
 
 ```lua
     --run a block of code in javascript directly.
-    js.eval("Alert('Hello from Lua!');")
+    js.eval("alert('Hello from Lua!');")
 ```
 
 #### 2. Using the `js.run(command, ...)` function.
