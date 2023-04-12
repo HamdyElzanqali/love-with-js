@@ -116,7 +116,8 @@ Then inside your lua script, you need to define the function as follows:
     })
 ```
 
-However, in order for this to work you need to call `js.update()` each frame.
+However, in order for this to work you need to call `js.update()` each frame.  
+If `js.update()` causes any performance problem (which should not and did not happen as I was testing the game), consider only calling it manually when needed.
 
 ```lua
     function love.update(dt)
