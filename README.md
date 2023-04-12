@@ -29,7 +29,7 @@ Now, you should be able to use the library inside the game.
 Copy `js-server.lua` anywhere in your project where you can load it.
 
 ```lua
-    #load the library
+    --load the library
     local js = require "path.to.js-server"
 ```
 
@@ -42,7 +42,7 @@ There are two ways to run your JavaScript code from lua:
 Please note that this method relies on JavaScript's `eval()` function which may be considered a secuirty risk and thus it is blocked on some websites.
 
 ```lua
-    #run a block of code in javascript directly.
+    --run a block of code in javascript directly.
     js.eval("Alert('Hello from Lua!');")
 ```
 
@@ -54,7 +54,7 @@ You can also use it to separate the game logic from the JavaScript logic. (e.g. 
 In lua, you can simply do:
 
 ```lua
-    #runs the `foo` function with the arguments 1, 2, 3
+    --runs the `foo` function with the arguments 1, 2, 3
     js.run("foo", 1, 2, 3)
 ```
 
@@ -110,7 +110,7 @@ Similar in spirit to `js.run()`, you can use it in JavaScript as follows:
 Then inside your lua script, you need to define the function as follows:
 
 ```lua
-    # Binds a function to a specific command from JavaScript.
+    -- Binds a function to a specific command from JavaScript.
     js.set("foo", function(first, second, third){
         print(first .. ", " .. second .. ", " .. third)
     })
@@ -136,11 +136,11 @@ Because of the way this is implemented, it is impossible to `return` anything in
             case "get_leaderboard":
                 leaderboard = sdk_leaderboard()
 
-                # It will be called in the same order in the game.
+                // It will be called in the same order in the game.
                 for (let player in leaderboard) {
                     lua("add_leaderboard_player", player.name, player.score);
                 }
-                # You can also convert the array to JSON then convert it back to a list in lua using another library like rxi/json.lua.
+                // You can also convert the array to JSON then convert it back to a list in lua using another library like rxi/json.lua.
                 
                 break
 
@@ -154,7 +154,7 @@ Because of the way this is implemented, it is impossible to `return` anything in
 ```
 
 ```lua
-    # Lua
+    -- Lua
     js.set("get_id", function(){
         js.run("id", global.ID)
     })
