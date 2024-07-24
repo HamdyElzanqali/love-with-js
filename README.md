@@ -195,7 +195,7 @@ A side effect to this is that you can no longer use `io.read()` to get the input
 Since `js.update()` uses Lua's `io.read()`, it can in theory cause performance problems since it waits for the input (which should happen instantly). I had no performance problems myself, but if you run into any, you can manually call `js.update()` when needed instead of calling it from `love.update()`.
 
 
-Here is what's changed in the `love.js` file in case some breaking change happens in the future. (`beautify` the file then go to around the line 1826).
+Here is what's changed in the `love.js` file in case some breaking change happens in the future. (`beautify` the file then go to around the line 1745).
 
 ```javascript
     ...
@@ -246,7 +246,7 @@ Here is what's changed in the `love.js` file in case some breaking change happen
         put_char: function (tty, val) {
         if (val === null || val === 10) {
             //out(UTF8ArrayToString(tty.output, 0)
-            )
+            
             let str = UTF8ArrayToString(tty.output, 0);
             if (str.startsWith("JS: ")){
             let cmd = str.slice(4).split(">>>");
