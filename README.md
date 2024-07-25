@@ -244,39 +244,41 @@ Here is what's changed in the `love.js` file in case some breaking change happen
         return tty.input.shift()
         },
         put_char: function (tty, val) {
-        if (val === null || val === 10) {
-            //out(UTF8ArrayToString(tty.output, 0)
-            
-            let str = UTF8ArrayToString(tty.output, 0);
-            if (str.startsWith("JS: ")){
-            let cmd = str.slice(4).split(">>>");
-            runCommand(cmd[0], cmd.slice(1));
-            } else if (str.startsWith("RUN_JS: ")) {
-                eval(str.slice(8));
+            if (val === null || val === 10) {
+                //out(UTF8ArrayToString(tty.output, 0)
+                
+                let str = UTF8ArrayToString(tty.output, 0);
+                tty.output = []
+
+                if (str.startsWith("JS: ")){
+                    let cmd = str.slice(4).split(">>>");
+                    runCommand(cmd[0], cmd.slice(1));
+                } else if (str.startsWith("RUN_JS: ")) {
+                    eval(str.slice(8));
+                }
+                else {
+                    out(UTF8ArrayToString(tty.output, 0))
+                }
+            } else {
+                if (val != 0) tty.output.push(val)
             }
-            else {
-                out(UTF8ArrayToString(tty.output, 0))
-            }
-            tty.output = []
-        } else {
-            if (val != 0) tty.output.push(val)
-        }
         },
         flush: function (tty) {
-        if (tty.output && tty.output.length > 0) {
-            //out(UTF8ArrayToString(tty.output, 0))
+            if (tty.output && tty.output.length > 0) {
+                //out(UTF8ArrayToString(tty.output, 0))
 
-            if (str.startsWith("JS: ")){
-            let cmd = str.slice(4).split(">>>");
-                runCommand(cmd[0], cmd.slice(1));
-            } else if (str.startsWith("RUN_JS: ")) {
-                eval(str.slice(8));
+                if (str.startsWith("JS: ")){
+                tty.output = []
+                
+                let cmd = str.slice(4).split(">>>");
+                    runCommand(cmd[0], cmd.slice(1));
+                } else if (str.startsWith("RUN_JS: ")) {
+                    eval(str.slice(8));
+                }
+                else {
+                    out(UTF8ArrayToString(tty.output, 0))
+                }
             }
-            else {
-                out(UTF8ArrayToString(tty.output, 0))
-            }
-            tty.output = []
-        }
         }
     },
     ...
